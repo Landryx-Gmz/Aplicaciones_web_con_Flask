@@ -12,4 +12,11 @@ a{
 a:hover{
     color: yellow;
 }
+/* Clases o selectores en CSS */
+
+.texto-centrado{
+    text-align: center;
+}
+.titulo{
+    font-size: 200%;
 }
