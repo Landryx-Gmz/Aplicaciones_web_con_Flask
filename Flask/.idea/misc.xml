@@ -3,9 +3,6 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (Flask)" />
   </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
