@@ -1,0 +1,4 @@
+Estructura de ficheros:
+
+Aplicaciones con flask:
+-------------------------ManejoWeb(HTML,CSS,Bootstrap)
