@@ -26,6 +26,9 @@
             <form action="/guardar" method="post" autocomplete="off">
                 <!-- llamamos a nuestro token llave secreta -->
                 {{forma.csrf_token}}
+                <!--valor de id oculto-->
+                {{forma.id}}
+                <!--  (manualmente)              <input type="hidden" id="id" value="1">-->
                 <!--Nombre-->
                 <div class="form-floating py-2">
                     <!--                    <input type="text" class="form-control" id="nombre" placeholder="Nombre"/>-->
