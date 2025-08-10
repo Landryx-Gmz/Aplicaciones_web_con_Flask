@@ -6,6 +6,9 @@ from cliente_forma import ClienteForma
 
 app = Flask(__name__)
 
+# Creamos nuestra clave secreta para evitar vulneravilidad y poder procesar los campos con WTF
+app.config['SECRET_KEY'] = 'llave_secreta_123'  # llave antivulnerabilidad tipo CSRF
+
 titulo_app = 'Zona Fit (GYM)'
 
 
