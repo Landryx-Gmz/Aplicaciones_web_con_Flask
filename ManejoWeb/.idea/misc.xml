@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-=======
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (ManejoWeb)" />
   </component>
->>>>>>> HTML_CSS_Bootstrap
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>

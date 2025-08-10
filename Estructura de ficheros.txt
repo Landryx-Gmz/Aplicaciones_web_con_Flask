@@ -1,4 +1,13 @@
 Estructura de ficheros:
 
 Aplicaciones con flask:
--------------------------ManejoWeb(HTML,CSS,Bootstrap)
+|
+|
+---\ManejoWeb(HTML,CSS,Bootstrap)
+|
+|
+---\Flask(Entornos:Flask/WTF/MySql)
+|
+--------(Tecnolgias:HTML,Bootstrap,Python)
+|
+--------------Template(HTML)
