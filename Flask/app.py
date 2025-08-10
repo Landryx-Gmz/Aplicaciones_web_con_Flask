@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, redirect
 
 from cliente import Cliente
 from cliente_dao import ClienteDAO
@@ -23,6 +23,28 @@ def inicio():
     cliente = Cliente()  # Utilizamos el objeto para rellenar los parametros del formulario
     cliente_forma = ClienteForma(obj=cliente)  # atravez de (obj) indicamos los parametros iniciales
     return render_template('index.html', titulo=titulo_app, clientes=clientes_db, forma=cliente_forma)
+
+
+# Nuevo decorador para ruta de boton guardar
+@app.route('/guardar', methods=['POST'])
+def guardar():
+    # Creamos los objetos de cliente inicialmente (objetos vacios)
+    cliente = Cliente()
+    cliente_forma = ClienteForma(obj=cliente)
+    # validamos si los valosres del formulario son validos con : .validate_on_submit()
+    if cliente_forma.validate_on_submit():
+        # Llenamos el objeto cliente con  los valores del formulario con: .populate_obj(cliente)
+        cliente_forma.populate_obj(cliente)
+        # Guardamos el nuevo cliente en la BD
+        ClienteDAO.insertar(cliente)
+    # Redireccionar a la pagina de inicio con: redirect(url_for('nombre_metodo'))
+    return redirect(url_for('inicio'))
+
+
+# Decorador para ruta limpiar
+@app.route('/limpiar')
+def limpiar():
+    return redirect(url_for('inicio'))
 
 
 if __name__ == '__main__':
