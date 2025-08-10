@@ -32,12 +32,13 @@ class ClienteDAO:
                 Conexion.liberar_conexion(conexion)
 
     @classmethod
-    def seleccionar_por_id(cls):
+    def seleccionar_por_id(cls, id):
         conexion = None
         try:
             conexion = Conexion.obtener_conexion()
             cursor = conexion.cursor()
-            cursor.execute(cls.SELECCIONAR_ID)
+            valores = (id,)
+            cursor.execute(cls.SELECCIONAR_ID, valores)
             registro = cursor.fetchone()  # recupera solo un cliente
             # Mapeo de clase-tabla cliente
             cliente = Cliente(registro[0], registro[1], registro[2], registro[3])

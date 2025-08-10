@@ -40,15 +40,21 @@ def guardar():
     # Redireccionar a la pagina de inicio con: redirect(url_for('nombre_metodo'))
     return redirect(url_for('inicio'))
 
+
 # Decorador para ruta limpiar
 @app.route('/limpiar')
 def limpiar():
     return redirect(url_for('inicio'))
 
-# Metodo y decorador para editar
-@app.route('/editar/<int:id>')#Peticiones tipo localhost:5000/editar/1
-def editar(id):
 
+# Metodo y decorador para editar
+@app.route('/editar/<int:id>')  # Peticiones tipo localhost:5000/editar/1
+def editar(id):
+    cliente = ClienteDAO.seleccionar_por_id(id)
+    cliente_forma = ClienteForma(obj=cliente)
+    # Recuperar el listadod de clientes para mostrarlos en la plantilla
+    clientes_db = ClienteDAO.seleccionar()
+    return render_template('index.html', titulo=titulo_app, clientes=clientes_db, forma=cliente_forma)
 
 
 if __name__ == '__main__':
