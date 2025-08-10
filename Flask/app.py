@@ -34,9 +34,13 @@ def guardar():
     # validamos si los valosres del formulario son validos con : .validate_on_submit()
     if cliente_forma.validate_on_submit():
         # Llenamos el objeto cliente con  los valores del formulario con: .populate_obj(cliente)
-        cliente_forma.populate_obj(cliente)
-        # Guardamos el nuevo cliente en la BD
-        ClienteDAO.insertar(cliente)
+        cliente_forma.populate_obj(cliente)  # Tambien se recupera el id oculto del formulario
+        # condicional para guardar con editar
+        if not cliente.id:
+            # Guardamos el nuevo cliente en la BD
+            ClienteDAO.insertar(cliente)
+        else:
+            ClienteDAO.actualizar(cliente)
     # Redireccionar a la pagina de inicio con: redirect(url_for('nombre_metodo'))
     return redirect(url_for('inicio'))
 
