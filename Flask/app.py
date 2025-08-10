@@ -40,11 +40,15 @@ def guardar():
     # Redireccionar a la pagina de inicio con: redirect(url_for('nombre_metodo'))
     return redirect(url_for('inicio'))
 
-
 # Decorador para ruta limpiar
 @app.route('/limpiar')
 def limpiar():
     return redirect(url_for('inicio'))
+
+# Metodo y decorador para editar
+@app.route('/editar/<int:id>')#Peticiones tipo localhost:5000/editar/1
+def editar(id):
+
 
 
 if __name__ == '__main__':

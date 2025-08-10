@@ -4,6 +4,7 @@ from cliente import Cliente
 
 class ClienteDAO:
     SELECCIONAR = 'SELECT * FROM cliente ORDER BY id'
+    SELECCIONAR_ID = 'SELECT * FROM cliente WHERE id=%s'
     INSERTAR = 'INSERT INTO cliente(nombre, apellido, membresia) VALUES(%s, %s, %s)'
     ACTUALIZAR = 'UPDATE cliente SET nombre=%s, apellido=%s, membresia=%s WHERE id=%s'
     ELIMINAR = 'DELETE FROM cliente WHERE id=%s'
@@ -25,6 +26,24 @@ class ClienteDAO:
             return clientes
         except Exception as e:
             print(f'Ocurrio un error al seleccionar clientes: {e}')
+        finally:
+            if conexion is not None:
+                cursor.close()
+                Conexion.liberar_conexion(conexion)
+
+    @classmethod
+    def seleccionar_por_id(cls):
+        conexion = None
+        try:
+            conexion = Conexion.obtener_conexion()
+            cursor = conexion.cursor()
+            cursor.execute(cls.SELECCIONAR_ID)
+            registro = cursor.fetchone()  # recupera solo un cliente
+            # Mapeo de clase-tabla cliente
+            cliente = Cliente(registro[0], registro[1], registro[2], registro[3])
+            return cliente
+        except Exception as e:
+            print(f'Ocurrio un error al seleccionar un cliente por id: {e}')
         finally:
             if conexion is not None:
                 cursor.close()
